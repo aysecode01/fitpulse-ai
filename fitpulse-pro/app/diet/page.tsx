@@ -51,7 +51,7 @@ export default function DietPlan() {
     content = {
       label: "KAHVALTIYI KAÇIRDIN!",
       menu: "En önemli öğün olan kahvaltıyı nasıl kaçırırsın? Artık öğleye kadar hafif bir şeyler atıştıralım.",
-      drink: "1 bardak ayran veya bir avuç sarı leblebi var ise yoksada bir haşlanmış yumurta yeter",
+      drink: "1 bardak ayran veya bir avuç sarı leblebi var ise; yoksa da bir haşlanmış yumurta yeter.",
       detox: "Metabolizma Kurtarma:\n• 1 bardak sıcak su\n• 5-6 dal taze maydanoz\n• Yarım dilimlenmiş limon",
       icon: <Ban className="text-orange-500" size={36} />
     };
@@ -60,7 +60,7 @@ export default function DietPlan() {
   else if (timeVal >= 12.5 && timeVal <= 14.5) {
     content = {
       label: "ÖĞLE YEMEĞİ VAKTİ",
-      menu: "Izgara tavuk veya protein ağırlıklı bir salata ile devam ediyoruz. bunlarda yoksa güzelce bir mecimek çorbası ama bir kase ondan fazla yok!",
+      menu: "Izgara tavuk veya protein ağırlıklı bir salata ile devam ediyoruz. Bunlar da yoksa güzelce bir mercimek çorbası ama bir kase, ondan fazla yok!",
       drink: "Ayran veya Maden Suyu",
       detox: "Sindirime Yardımcı:\n• Yarım bardak su\n• 1 tatlı kaşığı elma sirkesi",
       icon: <Utensils className="text-orange-500" size={36} />
@@ -80,7 +80,7 @@ export default function DietPlan() {
   else if (timeVal >= 18 && timeVal <= 20.5) {
     content = {
       label: "AKŞAM YEMEĞİ",
-      menu: "Hafif ama doyurucu: Sebze yemeği veya ızgara balık + yoğurt. bu kadar zenginliğe gerek yok balık yoktur kesin ha onun için akşam ne yaptıysan ondan yarım porsiyon ye",
+      menu: "Hafif ama doyurucu: Sebze yemeği veya ızgara balık + yoğurt. Bu kadar zenginliğe gerek yok, balık yoktur kesin ha; onun için akşam ne yaptıysan ondan yarım porsiyon ye.",
       drink: "Bol Su",
       detox: "Gece Yağ Yakımı:\n• 1 fincan beyaz çay\n• Limon dilimi",
       icon: <Utensils className="text-orange-500" size={36} />
@@ -100,7 +100,8 @@ export default function DietPlan() {
   return (
     <div className="min-h-screen bg-[#050505] text-white p-4 flex flex-col items-center justify-center font-sans">
       <div className="max-w-md w-full text-center">
-        <button onClick={() => router.push('/')} className="flex items-center gap-2 text-slate-500 mb-6 hover:text-white transition-all mx-auto">
+        {/* Dashboard yönlendirmesi düzeltildi */}
+        <button onClick={() => router.push('/dashboard')} className="flex items-center gap-2 text-slate-500 mb-6 hover:text-white transition-all mx-auto">
           <ArrowLeft size={18} /> Geri Dön
         </button>
 
@@ -139,8 +140,9 @@ export default function DietPlan() {
               </div>
             </div>
 
+            {/* Dashboard yönlendirmesi düzeltildi */}
             <button 
-              onClick={() => router.push('/')}
+              onClick={() => router.push('/dashboard')}
               className="w-full mt-8 py-5 bg-orange-500 text-black font-black rounded-2xl hover:bg-orange-400 transition-all uppercase italic shadow-[0_10px_30px_-10px_rgba(249,115,22,0.4)]"
             >
               TAMAMDIR KOÇ!
