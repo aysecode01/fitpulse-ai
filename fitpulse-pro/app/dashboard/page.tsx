@@ -4,10 +4,38 @@ import { useRouter } from 'next/navigation';
 import { LogOut, Scale, Droplets, Utensils, Clock, Eye, Lock, Send, Bot, Flame } from 'lucide-react';
 
 const translations: any = {
-  TR: { welcome: "Selam", weight: "Mevcut Kilon", water: "Su Hedefi", diet: "Diyet", coach: "AI SAĞLIK KOÇU", account: "HESABIM", start: "ANTRENMANI BAŞLAT", rest: "DİNLENME VAKTİ", preview: "ÖN İZLEME", nextWater: "Sıradaki Su", close: "Kapat", moto: "Hedeflerine odaklan, mazeret üretme!" },
-  EN: { welcome: "Hello", weight: "Current Weight", water: "Water Goal", diet: "Diet", coach: "AI HEALTH COACH", account: "ACCOUNT", start: "START WORKOUT", rest: "REST TIME", preview: "PREVIEW", nextWater: "Next Water", close: "Close", moto: "Focus on your goals, no excuses!" },
-  AR: { welcome: "مرحباً", weight: "الوزن الحالي", water: "هدف الماء", diet: "النظام الغذائي", coach: "مدرب الذكاء الاصطناعي", account: "حسابي", start: "ابدأ التمرين", rest: "وقت الراحة", preview: "معاينة", nextWater: "الماء القادم", close: "غلق", moto: "ركز على أهدافك ، لا أعذار!" },
-  UG: { welcome: "خۇش كەپسىز", weight: "ئېغىرلىق", water: "سۇ نىشانى", diet: "يېمەكلىك", coach: "سۈنئىي ئىدراك مەشقاۋۇلى", account: "ھېساباتىم", start: "باشلاش", rest: "ئارام ئېلىش", preview: "كۆرۈش", nextWater: "كېيىنكى سۇ", close: "ياپ", moto: "نىشانىڭىزغا ئەھمىيەت بېرىڭ ، باھانە يوق!" }
+  TR: { 
+    welcome: "Selam", weight: "Mevcut Kilon", water: "Su Hedefi", diet: "Diyet", 
+    coach: "AI SAĞLIK KOÇU", account: "HESABIM", start: "ANTRENMANI BAŞLAT", 
+    rest: "DİNLENME VAKTİ", preview: "ÖN İZLEME", nextWater: "Sıradaki Su", 
+    close: "Kapat", moto: "Hedeflerine odaklan, mazeret üretme!",
+    exercises: ["Isınma - 5 Dakika", "Squat - 3x15", "Şınav - 3x10", "Plank - 60 Sn"],
+    dietBtn: "DİYETİ GÖR"
+  },
+  EN: { 
+    welcome: "Hello", weight: "Current Weight", water: "Water Goal", diet: "Diet", 
+    coach: "AI HEALTH COACH", account: "ACCOUNT", start: "START WORKOUT", 
+    rest: "REST TIME", preview: "PREVIEW", nextWater: "Next Water", 
+    close: "Close", moto: "Focus on your goals, no excuses!",
+    exercises: ["Warm-up - 5 Min", "Squat - 3x15", "Push-up - 3x10", "Plank - 60 Sec"],
+    dietBtn: "VIEW DIET"
+  },
+  AR: { 
+    welcome: "مرحباً", weight: "الوزن الحالي", water: "هدف الماء", diet: "النظام الغذائي", 
+    coach: "مدرب الذكاء الاصطناعي", account: "حسابي", start: "ابدأ التمرين", 
+    rest: "وقت الراحة", preview: "معاينة", nextWater: "الماء القادم", 
+    close: "غلق", moto: "ركز على أهدافك ، لا أعذار!",
+    exercises: ["الإحماء - 5 دقائق", "سكوات - 3x15", "تمرين الضغط - 3x10", "بلانك - 60 ثانية"],
+    dietBtn: "عرض النظام الغذائي"
+  },
+  UG: { 
+    welcome: "خۇش كەپسىز", weight: "ئېغىرلىق", water: "سۇ نىشانى", diet: "يېمەكلىك", 
+    coach: "سۈنئىي ئىدراك مەشقاۋۇلى", account: "ھېساباتىم", start: "باشلاش", 
+    rest: "ئارام ئېلىش", preview: "كۆرۈش", nextWater: "كېيىنكى سۇ", 
+    close: "ياپ", moto: "نىشانىڭىزغا ئەھمىيەت بېرىڭ ، باھانە يوق!",
+    exercises: ["ئىسسىنىش - 5 مىنۇت", "سكۋات - 3x15", "ئىتتىرىش - 3x10", "پلانك - 60 سېكۇنت"],
+    dietBtn: "يېمەكلىك تىزىملىكى"
+  }
 };
 
 export default function Dashboard() {
@@ -47,6 +75,7 @@ export default function Dashboard() {
     const next = langs[(langs.indexOf(lang) + 1) % langs.length];
     setLang(next);
     localStorage.setItem('appLang', next);
+    setAiResponse(`${translations[next].welcome} ${user.name}! 👋`);
   };
 
   const handleAiChat = async () => {
@@ -110,7 +139,7 @@ export default function Dashboard() {
           </div>
           <div className="bg-[#0f0f0f] border border-white/5 p-8 rounded-[30px] md:rounded-[40px] shadow-2xl flex flex-col justify-between">
             <Utensils className="text-emerald-500 mb-4" size={24} />
-            <button onClick={() => router.push('/diet')} className="w-full py-3 bg-white text-black font-black rounded-xl text-[10px] hover:bg-emerald-500 transition-all uppercase italic">{t.diet}İ GÖR</button>
+            <button onClick={() => router.push('/diet')} className="w-full bg-white text-black py-4 rounded-2xl font-black italic uppercase text-xs tracking-widest">{t.dietBtn}</button>
           </div>
         </div>
 
@@ -130,13 +159,15 @@ export default function Dashboard() {
         <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex items-center justify-center p-4">
           <div className="max-w-md w-full bg-[#111] p-10 rounded-[40px] border border-white/10 relative shadow-2xl">
             <button onClick={() => setShowPreview(false)} className="absolute top-6 right-8 text-slate-500 font-black hover:text-white uppercase text-[10px] tracking-widest">{t.close}</button>
-            <h3 className="text-2xl font-black italic uppercase mb-8 text-orange-500 tracking-tighter text-left">EGZERSİZ PROGRAMI</h3>
+            <h3 className="text-2xl font-black italic uppercase mb-8 text-orange-500 tracking-tighter text-left">{t.preview}</h3>
             <div className="space-y-4 opacity-50 grayscale text-left">
-              {["Isınma - 5 Dakika", "Squat - 3x15", "Şınav - 3x10", "Plank - 60 Sn"].map((ex, i) => (
+              {t.exercises.map((ex: string, i: number) => (
                 <div key={i} className="p-4 bg-white/5 rounded-2xl flex justify-between items-center border border-white/5"><span className="font-bold italic text-sm">{ex}</span><Lock size={14}/></div>
               ))}
             </div>
-            <p className="mt-8 text-[10px] text-center font-bold text-slate-500 uppercase italic">Saatinde gel, kilitleri açalım!</p>
+            <p className="mt-8 text-[10px] text-center font-bold text-slate-500 uppercase italic">
+                {lang === 'TR' ? "Saatinde gel, kilitleri açalım!" : lang === 'EN' ? "Come on time, let's unlock!" : "..."}
+            </p>
           </div>
         </div>
       )}
