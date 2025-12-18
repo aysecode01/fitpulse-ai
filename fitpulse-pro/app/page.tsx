@@ -1,92 +1,96 @@
-"use client";
 import React from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { Globe, User, ChevronRight } from 'lucide-react';
+import { Globe, User, ArrowRight } from 'lucide-react';
 
-export default function FitPulseHero() {
+export default function FitPulseWebsite() {
   return (
-    <div className="min-h-screen bg-[#050505] text-white flex flex-col font-sans selection:bg-orange-500/30">
+    <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden">
       
-      {/* HEADER: Dil Seçeneği ve Giriş Yap */}
-      <header className="w-full p-5 flex justify-between items-center max-w-xl mx-auto">
-        <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-9 h-9 bg-orange-500 rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(249,115,22,0.4)] group-hover:scale-110 transition-transform">
-            <span className="font-black text-black text-xl italic">F</span>
+      {/* HEADER: Masaüstü Menü */}
+      <header className="fixed top-0 w-full z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-10 h-24 flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(249,115,22,0.5)]">
+              <span className="font-black text-black text-3xl italic">F</span>
+            </div>
+            <span className="text-3xl font-black italic tracking-tighter uppercase">FitPulse AI</span>
           </div>
-          <span className="font-black italic tracking-tighter text-lg uppercase">FitPulse AI</span>
-        </div>
 
-        <div className="flex items-center gap-4">
-          {/* Dil Seçeneği */}
-          <button className="flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-orange-500 transition-colors uppercase tracking-widest">
-            <Globe size={14} />
-            TR
-          </button>
-          
-          {/* Giriş Yap Butonu */}
-          <button className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[12px] font-black uppercase tracking-wider hover:bg-white/10 transition-all flex items-center gap-2 active:scale-95">
-            <User size={14} className="text-orange-500" />
-            Giriş Yap
-          </button>
+          <div className="flex items-center gap-10">
+            <button className="flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-orange-500 tracking-widest uppercase transition-all">
+              <Globe size={20} /> TR
+            </button>
+            <button className="px-10 py-3 bg-white/5 border border-white/10 rounded-full text-[13px] font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all active:scale-95">
+              Giriş Yap
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* ANA İÇERİK: Mobil Görünümlü Orta Alan */}
-      <main className="flex-1 flex flex-col items-center justify-center px-8 pb-12 max-w-md mx-auto w-full text-center">
+      {/* MAIN SECTION: Domuz Animasyonu ve Başlık */}
+      <main className="max-w-7xl mx-auto px-10 pt-48 pb-20 flex flex-col lg:flex-row items-center justify-between gap-16">
         
-        {/* LOTTIE ANIMASYONU (Senin Domuz Figürü) */}
-        <div className="relative w-full max-w-[280px] aspect-square mb-6 group">
-          {/* Domuzun arkasındaki turuncu parlama (Glow effect) */}
-          <div className="absolute inset-0 bg-orange-500/15 blur-[100px] rounded-full group-hover:bg-orange-500/25 transition-all duration-700"></div>
-          
-          <DotLottieReact
-            src="/ad.lottie" // ad.lottie dosyasını 'public' klasörüne koymayı unutma!
-            loop
-            autoplay
-            className="relative z-10 w-full h-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-          />
-
-          {/* Konuşma Balonu (Görseldeki gibi) */}
-          <div className="absolute -top-2 -right-2 bg-white text-black py-2 px-4 rounded-2xl rounded-bl-none shadow-2xl transform rotate-6 animate-bounce transition-transform hover:rotate-0">
-            <p className="text-[10px] font-black uppercase leading-tight italic">
-              Selam! <br /> <span className="text-orange-600">Başlayalım mı?</span>
-            </p>
-          </div>
-        </div>
-
-        {/* METİN ALANI */}
-        <div className="space-y-3 mb-10">
-          <h1 className="text-5xl font-black italic uppercase leading-[0.9] tracking-tighter">
-            KİŞİSEL <br /> 
-            <span className="text-orange-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.3)]">AI KOÇUN</span>
+        {/* Sol Taraf: Yazılar */}
+        <div className="flex-1 space-y-10">
+          <h1 className="text-8xl xl:text-9xl font-black italic uppercase leading-[0.8] tracking-tighter">
+            HİÇBİR ŞEY <br /> 
+            <span className="text-orange-500 drop-shadow-[0_0_40px_rgba(249,115,22,0.3)]">ÖDEME</span>
           </h1>
-          <p className="text-slate-500 text-sm font-bold uppercase tracking-[0.1em]">
-            Yazio gibi ama <span className="text-white">tamamen ücretsiz.</span>
+          <p className="text-slate-400 text-2xl font-medium max-w-xl leading-relaxed">
+            Yapay zeka koçunla tanış. Domuzcuk seni hedefine ulaştırırken cüzdanın güvende kalsın.
           </p>
+          <button className="group flex items-center gap-6 bg-orange-500 px-14 py-8 rounded-[3rem] shadow-[0_25px_70px_rgba(249,115,22,0.4)] hover:scale-105 transition-all">
+            <span className="text-3xl font-black italic uppercase tracking-tighter text-white">Hemen Başla</span>
+            <ArrowRight size={32} className="group-hover:translate-x-3 transition-transform" />
+          </button>
         </div>
 
-        {/* HEMEN BAŞLA BUTONU (Görseldeki gibi büyük ve turuncu) */}
-        <button className="w-full group relative overflow-hidden bg-orange-500 py-5 rounded-[2rem] shadow-[0_15px_40px_rgba(249,115,22,0.4)] transition-all hover:scale-[1.02] active:scale-95">
-          <div className="absolute inset-0 bg-white/20 translate-y-12 group-hover:translate-y-0 transition-transform duration-300"></div>
-          <div className="relative flex items-center justify-center gap-3">
-            <span className="text-2xl font-black italic uppercase tracking-tighter">Hemen Başla</span>
-            <ChevronRight size={24} strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
+        {/* Sağ Taraf: Domuz GIF/Resim */}
+        <div className="flex-1 relative">
+          <div className="absolute inset-0 bg-orange-500/10 blur-[150px] rounded-full"></div>
+          <img 
+            src="/domuz.gif" // Domuz animasyonunu buraya koy
+            alt="FitPulse Mascot"
+            className="relative z-10 w-full max-w-[550px] mx-auto drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)]"
+          />
+          {/* Konuşma Balonu */}
+          <div className="absolute -top-5 right-0 bg-white text-black p-6 rounded-[2.5rem] rounded-bl-none shadow-2xl rotate-6">
+            <p className="text-xl font-black italic uppercase tracking-tighter">ÜCRETSİZ <br/> ANALİZ!</p>
           </div>
-        </button>
-
-        {/* ALT BİLGİ */}
-        <div className="mt-8 flex flex-col gap-1">
-            <p className="text-[10px] text-slate-600 font-bold uppercase tracking-[0.4em]">
-                FitPulse AI • 2024
-            </p>
-            <div className="flex justify-center gap-2">
-                <div className="w-1 h-1 bg-orange-500/50 rounded-full"></div>
-                <div className="w-1 h-1 bg-orange-500/50 rounded-full"></div>
-                <div className="w-1 h-1 bg-orange-500/50 rounded-full"></div>
-            </div>
         </div>
-
       </main>
+
+      {/* BOTTOM STRIP: Spor Yapan Top */}
+      <section className="mt-10 bg-white/5 border-y border-white/5 py-10 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-10 flex items-center gap-16">
+          
+          {/* Spor Yapan Top GIF */}
+          <div className="w-40 h-40 flex-shrink-0">
+            <img 
+              src="/spor.gif" // Spor yapan top animasyonunu buraya koy
+              alt="Exercise Animation"
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          <div className="flex-1">
+             <h2 className="text-3xl font-black italic uppercase tracking-tighter mb-2 italic">HAREKET BEREKETTİR!</h2>
+             <p className="text-slate-500 font-bold uppercase tracking-[0.3em] text-sm">Gerçek zamanlı egzersiz takibi ve analizler.</p>
+          </div>
+
+          {/* İstatistikler */}
+          <div className="flex gap-20">
+            <div className="text-center">
+              <div className="text-4xl font-black text-orange-500 italic">%100</div>
+              <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest">DOĞRULUK</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-black text-orange-500 italic">0₺</div>
+              <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest">MALİYET</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
