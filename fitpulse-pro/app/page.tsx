@@ -1,88 +1,92 @@
 "use client";
 import React from 'react';
-import Link from 'next/link';
-import { Smartphone, Zap, Target, ArrowRight } from 'lucide-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { Globe, User, ChevronRight } from 'lucide-react';
 
-export default function LandingPage() {
+export default function FitPulseHero() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans">
-      {/* ÜST MENÜ (NAVIGASYON) */}
-      <nav className="flex justify-between items-center p-6 max-w-7xl mx-auto border-b border-slate-50">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent">
-          FitPulse AI
-        </h1>
-        <div className="flex items-center gap-6">
-          <Link href="/login" className="font-semibold text-slate-600 hover:text-pink-500 transition">
+    <div className="min-h-screen bg-[#050505] text-white flex flex-col font-sans selection:bg-orange-500/30">
+      
+      {/* HEADER: Dil Seçeneği ve Giriş Yap */}
+      <header className="w-full p-5 flex justify-between items-center max-w-xl mx-auto">
+        <div className="flex items-center gap-2 group cursor-pointer">
+          <div className="w-9 h-9 bg-orange-500 rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(249,115,22,0.4)] group-hover:scale-110 transition-transform">
+            <span className="font-black text-black text-xl italic">F</span>
+          </div>
+          <span className="font-black italic tracking-tighter text-lg uppercase">FitPulse AI</span>
+        </div>
+
+        <div className="flex items-center gap-4">
+          {/* Dil Seçeneği */}
+          <button className="flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-orange-500 transition-colors uppercase tracking-widest">
+            <Globe size={14} />
+            TR
+          </button>
+          
+          {/* Giriş Yap Butonu */}
+          <button className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[12px] font-black uppercase tracking-wider hover:bg-white/10 transition-all flex items-center gap-2 active:scale-95">
+            <User size={14} className="text-orange-500" />
             Giriş Yap
-          </Link>
-          <Link href="/register" className="bg-slate-900 text-white px-6 py-2.5 rounded-full font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-200">
-            Ücretsiz Başla
-          </Link>
+          </button>
         </div>
-      </nav>
+      </header>
 
-      {/* ANA GÖVDE (HERO SECTION) */}
-      <main className="max-w-7xl mx-auto px-6 pt-20 pb-32 text-center">
-        {/* Küçük Rozet */}
-        <div className="inline-block px-4 py-1.5 mb-8 text-sm font-bold tracking-wide text-pink-600 uppercase bg-pink-50 rounded-full border border-pink-100">
-          ✨ Yapay Zeka Destekli Kişisel Koçun
-        </div>
-
-        {/* Ana Başlık */}
-        <h2 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight italic leading-tight text-slate-900">
-          28 Günde <br />
-          <span className="bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 bg-clip-text text-transparent">
-            Vücudunu Yenile
-          </span>
-        </h2>
-
-        {/* Alt Başlık Yazısı */}
-        <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
-          Sana özel hazırlanan AI diyet listeleri ve antrenman programları ile hedefine ulaşmak artık çok daha kolay.
-        </p>
+      {/* ANA İÇERİK: Mobil Görünümlü Orta Alan */}
+      <main className="flex-1 flex flex-col items-center justify-center px-8 pb-12 max-w-md mx-auto w-full text-center">
         
-        {/* Hareket Butonu (CTA) */}
-        <div className="flex justify-center">
-          <Link href="/register">
-            <button className="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-12 py-5 rounded-3xl font-extrabold text-xl shadow-2xl shadow-pink-200 hover:scale-105 active:scale-95 transition-all flex items-center gap-3 group">
-              Hemen Başla 
-              <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          </Link>
-        </div>
+        {/* LOTTIE ANIMASYONU (Senin Domuz Figürü) */}
+        <div className="relative w-full max-w-[280px] aspect-square mb-6 group">
+          {/* Domuzun arkasındaki turuncu parlama (Glow effect) */}
+          <div className="absolute inset-0 bg-orange-500/15 blur-[100px] rounded-full group-hover:bg-orange-500/25 transition-all duration-700"></div>
+          
+          <DotLottieReact
+            src="/ad.lottie" // ad.lottie dosyasını 'public' klasörüne koymayı unutma!
+            loop
+            autoplay
+            className="relative z-10 w-full h-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+          />
 
-        {/* ÖZELLİK KARTLARI (KÜÇÜK KUTULAR) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-32 text-left">
-          <div className="p-10 bg-white rounded-[40px] border border-slate-100 shadow-xl shadow-slate-100/50 hover:border-pink-200 transition-all group">
-            <div className="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-pink-500 group-hover:text-white transition-all text-pink-500">
-              <Target size={28} />
-            </div>
-            <h4 className="text-2xl font-bold mb-3 italic">Hedef Odaklı</h4>
-            <p className="text-slate-500 font-medium leading-relaxed">Sen hedefini belirle, AI senin için en kısa ve sağlıklı yolu çizsin.</p>
-          </div>
-
-          <div className="p-10 bg-white rounded-[40px] border border-slate-100 shadow-xl shadow-slate-100/50 hover:border-orange-200 transition-all group">
-            <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-white transition-all text-orange-500">
-              <Zap size={28} />
-            </div>
-            <h4 className="text-2xl font-bold mb-3 italic">Kolay Takip</h4>
-            <p className="text-slate-500 font-medium leading-relaxed">Video destekli egzersizler ve canlı ilerleme takibi cebinde.</p>
-          </div>
-
-          <div className="p-10 bg-white rounded-[40px] border border-slate-100 shadow-xl shadow-slate-100/50 hover:border-purple-200 transition-all group">
-            <div className="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-500 group-hover:text-white transition-all text-purple-500">
-              <Smartphone size={28} />
-            </div>
-            <h4 className="text-2xl font-bold mb-3 italic">AI Beslenme</h4>
-            <p className="text-slate-500 font-medium leading-relaxed">Günün tarihine ve ihtiyacına göre otomatik güncellenen diyetler.</p>
+          {/* Konuşma Balonu (Görseldeki gibi) */}
+          <div className="absolute -top-2 -right-2 bg-white text-black py-2 px-4 rounded-2xl rounded-bl-none shadow-2xl transform rotate-6 animate-bounce transition-transform hover:rotate-0">
+            <p className="text-[10px] font-black uppercase leading-tight italic">
+              Selam! <br /> <span className="text-orange-600">Başlayalım mı?</span>
+            </p>
           </div>
         </div>
+
+        {/* METİN ALANI */}
+        <div className="space-y-3 mb-10">
+          <h1 className="text-5xl font-black italic uppercase leading-[0.9] tracking-tighter">
+            KİŞİSEL <br /> 
+            <span className="text-orange-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.3)]">AI KOÇUN</span>
+          </h1>
+          <p className="text-slate-500 text-sm font-bold uppercase tracking-[0.1em]">
+            Yazio gibi ama <span className="text-white">tamamen ücretsiz.</span>
+          </p>
+        </div>
+
+        {/* HEMEN BAŞLA BUTONU (Görseldeki gibi büyük ve turuncu) */}
+        <button className="w-full group relative overflow-hidden bg-orange-500 py-5 rounded-[2rem] shadow-[0_15px_40px_rgba(249,115,22,0.4)] transition-all hover:scale-[1.02] active:scale-95">
+          <div className="absolute inset-0 bg-white/20 translate-y-12 group-hover:translate-y-0 transition-transform duration-300"></div>
+          <div className="relative flex items-center justify-center gap-3">
+            <span className="text-2xl font-black italic uppercase tracking-tighter">Hemen Başla</span>
+            <ChevronRight size={24} strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
+          </div>
+        </button>
+
+        {/* ALT BİLGİ */}
+        <div className="mt-8 flex flex-col gap-1">
+            <p className="text-[10px] text-slate-600 font-bold uppercase tracking-[0.4em]">
+                FitPulse AI • 2024
+            </p>
+            <div className="flex justify-center gap-2">
+                <div className="w-1 h-1 bg-orange-500/50 rounded-full"></div>
+                <div className="w-1 h-1 bg-orange-500/50 rounded-full"></div>
+                <div className="w-1 h-1 bg-orange-500/50 rounded-full"></div>
+            </div>
+        </div>
+
       </main>
-
-      {/* Alt Bilgi */}
-      <footer className="py-10 text-center text-slate-400 text-sm border-t border-slate-50">
-        © 2025 FitPulse AI - Geleceğin Fitness Platformu
-      </footer>
     </div>
   );
 }
